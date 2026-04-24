@@ -7,6 +7,7 @@ from sklearn.model_selection import cross_val_score
 import numpy as np
 import logging
 import os
+import bentoml
 
 def main():
     logger = logging.getLogger(__name__)
@@ -45,6 +46,9 @@ def main():
     metrics["r2_cv_std"] = np.std(cv_scores)
     
     print(metrics)
+
+    model_ref = bentoml.sklearn.save_model("admission_model", model)
+
     
     # with open("metrics/scores.json", "w") as f:
     #     json.dump(metrics, f, indent=4)
