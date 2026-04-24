@@ -10,8 +10,13 @@ import logging
 def main():
     logger = logging.getLogger(__name__)
     logger.info('training model')
-    X_train = pd.read_csv("../../data/processed/X_train.csv")
-    y_train = pd.read_csv("../../data/processed/y_train.csv")
+
+    file_path = os.path.join(base_path, '../../data/processed')
+
+    X_train = pd.read_csv(file_output_path + "/X_train.csv")
+    y_train = pd.read_csv(file_output_path + "/y_train.csv")
+    X_test = pd.read_csv(file_output_path + "/X_test.csv")
+    y_test = pd.read_csv(file_output_path + "/y_test.csv")
 
     # Entraînement du modèle
     
