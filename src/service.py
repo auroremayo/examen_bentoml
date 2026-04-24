@@ -67,7 +67,7 @@ class AdmissionModelService:
         features_arr = np.array(features).reshape(1, -1)
         scaled_features = self.scaler.transform(features_arr)
         prediction = self.model.predict(scaled_features)
-        return float(prediction[0])
+        return float(np.array(prediction).item())
 
 @bentoml.service
 class AdmissionApiService:
