@@ -11,7 +11,7 @@ serve:
 token:
 	@curl -s -X POST "$(BASE_URL)/login" \
 		-H "Content-Type: application/json" \
-		-d '{"credentials":{"username":"admin","password":"bentoml_2026"}}' | jq -r '.access_token'
+		-d '{"credentials":{"username":"admin","password":"bentoml_2026"}}'
 
 predict:
 	@token=$$(curl -s -X POST "$(BASE_URL)/login" \
