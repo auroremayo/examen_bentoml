@@ -6,11 +6,13 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.model_selection import cross_val_score
 import numpy as np
 import logging
+import os
 
 def main():
     logger = logging.getLogger(__name__)
     logger.info('training model')
 
+    base_path = os.path.dirname(__file__)
     file_path = os.path.join(base_path, '../../data/processed')
 
     X_train = pd.read_csv(file_path + "/X_train.csv")
