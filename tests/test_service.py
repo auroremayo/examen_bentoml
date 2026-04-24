@@ -37,7 +37,7 @@ def test_auth_fails_if_token_expired():
     response = requests.post(f"{BASE_URL}/predict", headers=headers, json={"input_data": {}})
     
     assert response.status_code == 401
-    assert "expired" in response.json().get("detail", "").lower()
+    assert "le token a expiré" in response.json().get("detail", "").lower()
 
 # --- Tests API Connexion ---
 def test_login_success():
@@ -75,4 +75,4 @@ def test_predict_invalid_data(valid_token):
     # Envoi de données incomplètes
     data = {"input_data": {"GRE Score": "Pas un nombre"}}
     response = requests.post(f"{BASE_URL}/predict", headers=headers, json=data)
-    assert response.status_code == 422 # Erreur de validation Pydantic
+    assert response.status_code == 400
