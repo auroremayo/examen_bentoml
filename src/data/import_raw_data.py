@@ -60,7 +60,7 @@ def import_raw_data(raw_data_relative_path,
                 
 def main(raw_data_relative_path="data/raw", 
         filenames = ["admission.csv"],
-        bucket_folder_url= "https://assets-datascientest.s3.eu-west-1.amazonaws.com/MLOPS/bentoml/admission.csv"          
+        bucket_folder_url= "https://assets-datascientest.s3.eu-west-1.amazonaws.com/MLOPS/bentoml/"          
         ):
     """ Upload data from AWS s3 in ./
     """
