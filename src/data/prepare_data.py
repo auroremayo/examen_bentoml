@@ -8,6 +8,8 @@ df = pd.read_csv('../../data/raw/admission.csv')
 
 df = df.drop(columns=['Serial No.'])
 
+df.rename({'Chance of Admit ': 'Chance of Admit'}, axis=1, inplace=True)
+
 X = df.drop(columns=['Chance of Admit'])
 y = df['Chance of Admit']
 
@@ -19,8 +21,11 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-X_train_scaled.to_csv("../../data/processed/X_train.csv", index=False)
-X_test_scaled.to_csv("../../data/processed/X_test.csv", index=False)
+X_train_scaled_df = pd.DataFrame(X_train_scaled, columns=X.columns)
+X_test_scaled_df = pd.DataFrame(X_test_scaled, columns=X.columns)
+
+X_train_scaled_df.to_csv("../../data/processed/X_train.csv", index=False)
+X_test_scaled_df.to_csv("../../data/processed/X_test.csv", index=False)
 y_train.to_csv("../../data/processed/y_train.csv", index=False)
 y_test.to_csv("../../data/processed/y_test.csv", index=False)
 
