@@ -13,10 +13,10 @@ def main():
 
     file_path = os.path.join(base_path, '../../data/processed')
 
-    X_train = pd.read_csv(file_output_path + "/X_train.csv")
-    y_train = pd.read_csv(file_output_path + "/y_train.csv")
-    X_test = pd.read_csv(file_output_path + "/X_test.csv")
-    y_test = pd.read_csv(file_output_path + "/y_test.csv")
+    X_train = pd.read_csv(file_path + "/X_train.csv")
+    y_train = pd.read_csv(file_path + "/y_train.csv")
+    X_test = pd.read_csv(file_path + "/X_test.csv")
+    y_test = pd.read_csv(file_path + "/y_test.csv")
 
     # Entraînement du modèle
     
