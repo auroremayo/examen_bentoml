@@ -1,24 +1,22 @@
 import os
 import joblib
 import pandas as pd
+from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.model_selection import cross_val_score
 import numpy as np
-import json
 import logging
 
 def main():
     logger = logging.getLogger(__name__)
-    logger.info('evaluating model')
-    # Charger les données
-    X_train = pd.read_pickle("data/processed_data/X_train_scaled.pickle")
-    y_train = pd.read_csv("data/processed_data/y_train.csv")
-    X_test = pd.read_pickle("data/processed_data/X_test_scaled.pickle")
-    y_test = pd.read_csv("data/processed_data/y_test.csv")
+    logger.info('training model')
+    X_train = pd.read_csv("../../data/processed/X_train.csv")
+    y_train = pd.read_csv("../../data/processed/y_train.csv")
 
-
-    # Charger les meilleurs hyperparamètres
-    model = joblib.load("../../models/model.pkl")
+    # Entraînement du modèle
+    
+    model = LinearRegression()
+    model.fit(X_train, y_train)
 
     # Évaluer le modèle
     train_score = model.score(X_train, y_train)
@@ -41,11 +39,12 @@ def main():
     
     print(metrics)
     
-    with open("metrics/scores.json", "w") as f:
-        json.dump(metrics, f, indent=4)
-    print("Métriques sauvegardées dans metrics/scores.json")
+    # with open("metrics/scores.json", "w") as f:
+    #     json.dump(metrics, f, indent=4)
+    # print("Métriques sauvegardées dans metrics/scores.json")
 
 if __name__ == '__main__':
     log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     logging.basicConfig(level=logging.INFO, format=log_fmt)
+    
     main()
