@@ -5,8 +5,8 @@ import time
 from datetime import datetime, timedelta, timezone
 
 
-BASE_URL = "http://127.0.0.1:3001"
-JWT_SECRET_KEY = "admission_secret_key_2026" # Doit être la même que dans service.py
+BASE_URL = "http://127.0.0.1:3000"
+JWT_SECRET_KEY = "admission_secret_key_2026"
 JWT_ALGORITHM = "HS256"
 
 
@@ -28,7 +28,7 @@ def test_predict_invalid_token():
     assert response.status_code == 401
 
 def test_auth_fails_if_token_expired():
-    # On génère un jeton qui a expiré il y a 10 minutes
+    # Génération d'un jeton qui a expiré il y a 10 minutes
     exp = datetime.now(timezone.utc) - timedelta(minutes=10)
     expired_payload = {"sub": "admin", "exp": exp}
     expired_token = jwt.encode(expired_payload, JWT_SECRET_KEY, algorithm=JWT_ALGORITHM)
