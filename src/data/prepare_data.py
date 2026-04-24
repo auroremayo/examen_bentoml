@@ -3,8 +3,15 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import joblib
+import os
+import pandas as pd
 
-df = pd.read_csv('../../data/raw/admission.csv')
+# Récupère le chemin du dossier où se trouve le script actuel
+base_path = os.path.dirname(__file__)
+# Construit le chemin vers le CSV
+file_path = os.path.join(base_path, '../../data/raw/admission.csv')
+
+df = pd.read_csv(file_path)
 
 df = df.drop(columns=['Serial No.'])
 
