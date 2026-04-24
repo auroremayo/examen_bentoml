@@ -10,6 +10,7 @@ import pandas as pd
 base_path = os.path.dirname(__file__)
 # Construit le chemin vers le CSV
 file_path = os.path.join(base_path, '../../data/raw/admission.csv')
+file_output_path = os.path.join(base_path, '../../data/processed')
 
 df = pd.read_csv(file_path)
 
@@ -31,10 +32,10 @@ X_test_scaled = scaler.transform(X_test)
 X_train_scaled_df = pd.DataFrame(X_train_scaled, columns=X.columns)
 X_test_scaled_df = pd.DataFrame(X_test_scaled, columns=X.columns)
 
-X_train_scaled_df.to_csv("../../data/processed/X_train.csv", index=False)
-X_test_scaled_df.to_csv("../../data/processed/X_test.csv", index=False)
-y_train.to_csv("../../data/processed/y_train.csv", index=False)
-y_test.to_csv("../../data/processed/y_test.csv", index=False)
+X_train_scaled_df.to_csv(file_output_path + "/X_train.csv", index=False)
+X_test_scaled_df.to_csv(file_output_path + "/X_test.csv", index=False)
+y_train.to_csv(file_output_path + "/y_train.csv", index=False)
+y_test.to_csv(file_output_path + "/y_test.csv", index=False)
 
 
-joblib.dump(scaler, "../../data/processed/scaler.joblib")
+joblib.dump(scaler, file_output_path + "/scaler.joblib")
