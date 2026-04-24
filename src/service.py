@@ -57,7 +57,7 @@ class AdmissionModelService:
     def __init__(self):
         # Chargement du modèle et du scaler depuis le Model Store
         # Assurez-vous d'avoir utilisé ce nom lors de la sauvegarde
-        self.bento_model = bentoml.sklearn.get("admission_model:latest")
+        self.bento_model = bentoml.sklearn.get("admission_model:rc5sdar76k6gkcvh")
         self.model = self.bento_model.load_model()
         self.scaler = self.bento_model.custom_objects["scaler"]
 
