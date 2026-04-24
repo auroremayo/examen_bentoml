@@ -47,12 +47,16 @@ def main():
     
     print(metrics)
 
-    model_ref = bentoml.sklearn.save_model("admission_model", model)
+    scaler = joblib.load(os.path.join(base_path, '../../models/scaler.joblib'))
 
-    
-    # with open("metrics/scores.json", "w") as f:
-    #     json.dump(metrics, f, indent=4)
-    # print("Métriques sauvegardées dans metrics/scores.json")
+    bentoml.sklearn.save_model(
+    "admission_model",
+    model,
+    custom_objects={             # On enregistre le scaler avec le modèle
+        "scaler": scaler
+    }
+)
+
 
 if __name__ == '__main__':
     log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
