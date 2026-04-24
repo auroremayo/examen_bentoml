@@ -47,7 +47,7 @@ def main():
     
     print(metrics)
 
-    scaler = joblib.load(os.path.join(base_path, '../../models/scaler.joblib'))
+    scaler = joblib.load(os.path.join(base_path, '../../data/processed/scaler.joblib'))
 
     bentoml.sklearn.save_model(
     "admission_model",
