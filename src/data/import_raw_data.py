@@ -65,21 +65,21 @@ def main(raw_data_relative_path="data/raw",
     """ Upload data from AWS s3 in ./
     """
     import_raw_data(raw_data_relative_path, filenames, bucket_folder_url)
-    logger = logging.getLogger(__name__)
-    logger.info('making raw data set')
-    file_path = os.path.join(raw_data_relative_path, filenames[0])
-    df = pd.read_csv(file_path, sep=",")
-    df = df.drop('date', axis=1)
-    print(df.head())
+    # logger = logging.getLogger(__name__)
+    # logger.info('making raw data set')
+    # file_path = os.path.join(raw_data_relative_path, filenames[0])
+    # df = pd.read_csv(file_path, sep=",")
+    # df = df.drop('date', axis=1)
+    # print(df.head())
 
-    target = df['silica_concentrate']
-    feats = df.drop(['silica_concentrate'], axis = 1)
+    # target = df['silica_concentrate']
+    # feats = df.drop(['silica_concentrate'], axis = 1)
 
-    X_train, X_test, y_train, y_test = train_test_split(feats, target, test_size=0.3, random_state = 42)
+    # X_train, X_test, y_train, y_test = train_test_split(feats, target, test_size=0.3, random_state = 42)
 
-    for file, filename in zip([X_train, X_test, y_train, y_test], ['X_train', 'X_test', 'y_train', 'y_test']):
-        output_filepath = os.path.join("data/processed_data", f'{filename}.csv')
-        file.to_csv(output_filepath, index=False)
+    # for file, filename in zip([X_train, X_test, y_train, y_test], ['X_train', 'X_test', 'y_train', 'y_test']):
+    #     output_filepath = os.path.join("data/processed_data", f'{filename}.csv')
+    #     file.to_csv(output_filepath, index=False)
 
 
 if __name__ == '__main__':
