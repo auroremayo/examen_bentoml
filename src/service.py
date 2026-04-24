@@ -87,6 +87,7 @@ class AdmissionApiService:
     def predict(self, input_data: AdmissionInput) -> dict:
         # Extraction des données dans l'ordre attendu par le modèle
         features = [
+            0,  # Placeholder pour le Serial No. qui a été supprimé ??
             input_data.gre_score,
             input_data.toefl_score,
             input_data.university_rating,
