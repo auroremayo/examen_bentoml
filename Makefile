@@ -20,17 +20,5 @@ predict:
 	curl -s -X POST "$(BASE_URL)/predict" \
 		-H "Content-Type: application/json" \
 		-H "Authorization: Bearer $$token" \
-		-d '{ \
-			"input_data": { \
-				"GRE Score": 320, \
-				"TOEFL Score": 110, \
-				"University Rating": 4, \
-				"SOP": 4.5, \
-				"LOR": 4.0, \
-				"CGPA": 8.8, \
-				"Research": 1 \
-			} \
-		}'; \
+		-d '{"input_data": {"GRE Score": 320, "TOEFL Score": 110, "University Rating": 4, "SOP": 4.5, "LOR": 4.0, "CGPA": 8.8, "Research": 1}}'; \
 	echo
-
-test-api:predict
