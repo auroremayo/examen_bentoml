@@ -1,0 +1,23 @@
+service: "src.service:AdmissionApiService"
+description: "API de prédiction des chances d'admission aux universités avec sécurité JWT."
+labels:
+  owner: "DataScientest"
+  project: "admissions_prediction"
+  stage: "production"
+
+include:
+  - "src/service.py"
+  - "src/__init__.py"
+  
+models:
+  - admission_model:rc5sdar76k6gkcvh
+
+python:
+  packages:
+    - bentoml>=1.4.0
+    - scikit-learn
+    - pandas
+    - pydantic>=2.0
+    - pyjwt
+    - numpy
+    - starlette
